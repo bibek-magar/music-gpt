@@ -16,66 +16,52 @@ const libraryItems = [
 
 export default function Sidebar() {
   return (
-    <div className="w-[200px] h-full bg-[#FFFFFF08] p-6 flex flex-col">
+    <div className="w-50 h-screen bg-[#1A1A1A] px-6 py-8 flex flex-col font-[family-name:var(--font-inter)]">
       {/* Logo */}
-      <div className="flex items-center gap-2 mb-8">
-        <Image src="/logo.svg" alt="MusicGPT" width={32} height={32} />
-        <span
-          className="text-white font-medium"
-          style={{
-            fontFamily: "var(--font-inter), Inter, sans-serif",
-            fontSize: "16.46px",
-            lineHeight: "23.77px",
-            fontWeight: 500,
-            letterSpacing: "0%",
-          }}
-        >
+      <div className="flex items-center gap-3 mb-10">
+        <Image src="/icons/logo.svg" alt="MusicGPT" width={32} height={32} />
+        <span className="text-white font-medium text-[16.46px] leading-[23.77px] tracking-normal">
           MusicGPT
         </span>
       </div>
 
       {/* Search */}
-      <div className="mb-6 relative">
-        <input
-          type="text"
-          placeholder="Search ⌘K"
-          className="w-full bg-[#FFFFFF0D] text-white/60 px-3 py-2 rounded-lg text-sm pl-10"
-          style={{
-            fontFamily: "var(--font-inter), Inter, sans-serif",
-            fontSize: "14px",
-            lineHeight: "31px",
-            fontWeight: 500,
-            letterSpacing: "0.02em",
-          }}
-        />
-        <Image
-          src="/icons/search.svg"
-          alt="Search"
-          width={20}
-          height={20}
-          className="absolute left-3 top-1/2 -translate-y-1/2 opacity-60"
-        />
-      </div>
+      <button className="mb-8 w-[146px] h-[37px] bg-transparent rounded-[30px] border border-[#FFFFFF29] flex items-center justify-between px-4 py-[3px] opacity-100 hover:border-white/40 hover:bg-[#FFFFFF0A] transition-colors cursor-pointer group">
+        <div className="flex items-center gap-2">
+          <Image
+            src="/icons/search.svg"
+            alt="Search"
+            width={18}
+            height={18}
+            className="opacity-50"
+          />
+          <span className="text-white/50 text-sm font-normal group-hover:text-white/70 transition-colors">
+            Search
+          </span>
+        </div>
+        <span className="text-white/30 text-xs font-medium">⌘K</span>
+      </button>
 
       {/* Main Navigation */}
-      <nav className="mb-8 space-y-1">
+      <nav className="mb-12 space-y-2">
         {navItems.map((item) => (
           <button
             key={item.label}
-            className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
-              item.active ? "bg-white/10" : "hover:bg-white/5"
+            className={`flex items-center gap-3 py-2.5 px-4 rounded-full transition-all duration-200 cursor-pointer ${
+              item.active ? "bg-[#FFFFFF17]" : "hover:bg-[#FFFFFF0A]"
             }`}
           >
-            <Image src={item.icon} alt={item.label} width={20} height={20} />
+            <Image
+              src={item.icon}
+              alt={item.label}
+              width={20}
+              height={20}
+              className={item.active ? "opacity-100" : "opacity-70"}
+            />
             <span
-              className="text-white"
-              style={{
-                fontFamily: "var(--font-inter), Inter, sans-serif",
-                fontSize: "14px",
-                lineHeight: "31px",
-                fontWeight: 500,
-                letterSpacing: "0.02em",
-              }}
+              className={`font-medium text-sm leading-tight tracking-wide ${
+                item.active ? "text-white" : "text-white/70"
+              }`}
             >
               {item.label}
             </span>
@@ -85,35 +71,23 @@ export default function Sidebar() {
 
       {/* Library Section */}
       <div className="flex-1">
-        <h3
-          className="text-white/40 mb-3 px-3"
-          style={{
-            fontFamily: "var(--font-inter), Inter, sans-serif",
-            fontSize: "14px",
-            lineHeight: "31px",
-            fontWeight: 500,
-            letterSpacing: "0.02em",
-          }}
-        >
+        <h3 className="text-white/40 mb-4 px-4 text-xs tracking-wider font-semibold">
           Library
         </h3>
-        <nav className="space-y-1">
+        <nav className="space-y-2">
           {libraryItems.map((item) => (
             <button
               key={item.label}
-              className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+              className="w-full flex items-center gap-3 py-2.5 px-4 rounded-full hover:bg-[#FFFFFF0A] transition-all duration-200 cursor-pointer"
             >
-              <Image src={item.icon} alt={item.label} width={20} height={20} />
-              <span
-                className="text-white"
-                style={{
-                  fontFamily: "var(--font-inter), Inter, sans-serif",
-                  fontSize: "14px",
-                  lineHeight: "31px",
-                  fontWeight: 500,
-                  letterSpacing: "0.02em",
-                }}
-              >
+              <Image
+                src={item.icon}
+                alt={item.label}
+                width={20}
+                height={20}
+                className="opacity-70"
+              />
+              <span className="text-white/70 font-medium text-sm leading-tight tracking-wide">
                 {item.label}
               </span>
             </button>
