@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import PromotionalBanner from "@/components/molecules/PromotionalBanner";
+import SidebarFooter from "@/components/molecules/SidebarFooter";
 
 const navItems = [
   { icon: "/icons/home.svg", label: "Home", active: false },
@@ -16,7 +18,7 @@ const libraryItems = [
 
 export default function Sidebar() {
   return (
-    <div className="w-50 h-screen bg-[#1A1A1A] px-6 py-8 flex flex-col font-[family-name:var(--font-inter)]">
+    <div className="w-50 h-screen bg-[#1A1A1A] px-4 pt-5 pb-4 flex flex-col font-[family-name:var(--font-inter)]">
       {/* Logo */}
       <div className="flex items-center gap-3 mb-10">
         <Image src="/icons/logo.svg" alt="MusicGPT" width={32} height={32} />
@@ -43,11 +45,11 @@ export default function Sidebar() {
       </button>
 
       {/* Main Navigation */}
-      <nav className="mb-12 space-y-2">
+      <nav className="mb-8 space-y-[3px]">
         {navItems.map((item) => (
           <button
             key={item.label}
-            className={`flex items-center gap-3 py-2.5 px-4 rounded-full transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 h-[37px] px-4 rounded-full transition-all duration-200 cursor-pointer ${
               item.active ? "bg-[#FFFFFF17]" : "hover:bg-[#FFFFFF0A]"
             }`}
           >
@@ -69,16 +71,15 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Library Section */}
       <div className="flex-1">
-        <h3 className="text-white/40 mb-4 px-4 text-xs tracking-wider font-semibold">
+        <h3 className="text-white/40 mb-4 px-4 text-[14px] leading-[31px] tracking-[0.02em] font-medium">
           Library
         </h3>
-        <nav className="space-y-2">
+        <nav className="space-y-[3px]">
           {libraryItems.map((item) => (
             <button
               key={item.label}
-              className="w-full flex items-center gap-3 py-2.5 px-4 rounded-full hover:bg-[#FFFFFF0A] transition-all duration-200 cursor-pointer"
+              className="w-full flex items-center gap-2 h-[37px] px-4 rounded-full hover:bg-[#FFFFFF0A] transition-all duration-200 cursor-pointer"
             >
               <Image
                 src={item.icon}
@@ -94,6 +95,12 @@ export default function Sidebar() {
           ))}
         </nav>
       </div>
+
+      <div className="mb-5">
+        <PromotionalBanner />
+      </div>
+
+      <SidebarFooter />
     </div>
   );
 }
