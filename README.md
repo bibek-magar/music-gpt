@@ -6,18 +6,18 @@ This project simulates the "Create Music" experience of MusicGPT, featuring a hi
 
 The project is built using the following technologies:
 
--   **Frontend:** Next.js (App Router) + React 19
--   **Styling:** Tailwind CSS v4
--   **State Management:** Zustand (Global store for generation state)
--   **Real-Time:** Socket.io (Simulates backend progress updates)
--   **Animations:** CSS Keyframes & Transitions (No external animation libraries used for core effects)
+- **Frontend:** Next.js (App Router) + React 19
+- **Styling:** Tailwind CSS v4
+- **State Management:** Zustand (Global store for generation state)
+- **Real-Time:** Socket.io (Simulates backend progress updates)
+- **Animations:** CSS Keyframes & Transitions (No external animation libraries used for core effects)
 
 ### Key Components
 
--   **PromptInput:** Handles user input with a custom glow animation and validation.
--   **ProfilePopup & RecentGenerationsPanel:** Display generation history and sync in real-time.
--   **useGenerationStore:** Centralized store managing the state of all generations (queued, generating, completed, failed).
--   **Socket Server:** A custom Next.js API route (`pages/api/socket.ts`) that simulates the backend generation process.
+- **PromptInput:** Handles user input with a custom glow animation and validation.
+- **ProfilePopup & RecentGenerationsPanel:** Display generation history and sync in real-time.
+- **useGenerationStore:** Centralized store managing the state of all generations (queued, generating, completed, failed).
+- **Socket Server:** A custom Next.js API route (`pages/api/socket.ts`) that simulates the backend generation process.
 
 ## 🚀 How to Run
 
@@ -44,3 +44,7 @@ The project is built using the following technologies:
 3.  **Open the Application:**
 
     Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🎥 Demo Video
+
+[Watch the demo video](https://drive.google.com/file/d/1zkC5Sq5nCd-EsuQEYF-jGEOvJni3pkkN/view?usp=sharing)
