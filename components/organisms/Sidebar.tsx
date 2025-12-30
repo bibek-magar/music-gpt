@@ -4,6 +4,37 @@ import Image from "next/image";
 import PromotionalBanner from "@/components/molecules/PromotionalBanner";
 import SidebarFooter from "@/components/molecules/SidebarFooter";
 
+interface NavButtonProps {
+  icon: string;
+  label: string;
+  active?: boolean;
+}
+
+function NavButton({ icon, label, active = false }: NavButtonProps) {
+  return (
+    <button
+      className={`flex items-center gap-2 h-[37px] px-4 rounded-full transition-all duration-200 cursor-pointer ${
+        active ? "bg-[#FFFFFF17]" : "hover:bg-[#FFFFFF0A]"
+      }`}
+    >
+      <Image
+        src={icon}
+        alt={label}
+        width={20}
+        height={20}
+        className={active ? "opacity-100" : "opacity-70"}
+      />
+      <span
+        className={`font-medium text-sm leading-tight tracking-wide ${
+          active ? "text-white" : "text-white/70"
+        }`}
+      >
+        {label}
+      </span>
+    </button>
+  );
+}
+
 const navItems = [
   { icon: "/icons/home.svg", label: "Home", active: false },
   { icon: "/icons/create.svg", label: "Create", active: true },
@@ -18,7 +49,7 @@ const libraryItems = [
 
 export default function Sidebar() {
   return (
-    <div className="w-50 h-screen bg-[#1A1A1A] px-4 pt-5 pb-4 flex flex-col font-[family-name:var(--font-inter)]">
+    <div className="fixed left-0 top-0 w-50 h-screen bg-[#1A1A1A] px-4 pt-5 pb-4 flex flex-col font-[family-name:var(--font-inter)] overflow-y-auto z-40">
       {/* Logo */}
       <div className="flex items-center gap-3 mb-10">
         <Image src="/icons/logo.svg" alt="MusicGPT" width={32} height={32} />
@@ -27,7 +58,6 @@ export default function Sidebar() {
         </span>
       </div>
 
-      {/* Search */}
       <button className="mb-8 w-[146px] h-[37px] bg-transparent rounded-[30px] border border-[#FFFFFF29] flex items-center justify-between px-4 py-[3px] opacity-100 hover:border-white/40 hover:bg-[#FFFFFF0A] transition-colors cursor-pointer group">
         <div className="flex items-center gap-2">
           <Image
@@ -44,59 +74,32 @@ export default function Sidebar() {
         <span className="text-white/30 text-xs font-medium">⌘K</span>
       </button>
 
-      {/* Main Navigation */}
       <nav className="mb-8 space-y-[3px]">
         {navItems.map((item) => (
-          <button
+          <NavButton
             key={item.label}
-            className={`flex items-center gap-2 h-[37px] px-4 rounded-full transition-all duration-200 cursor-pointer ${
-              item.active ? "bg-[#FFFFFF17]" : "hover:bg-[#FFFFFF0A]"
-            }`}
-          >
-            <Image
-              src={item.icon}
-              alt={item.label}
-              width={20}
-              height={20}
-              className={item.active ? "opacity-100" : "opacity-70"}
-            />
-            <span
-              className={`font-medium text-sm leading-tight tracking-wide ${
-                item.active ? "text-white" : "text-white/70"
-              }`}
-            >
-              {item.label}
-            </span>
-          </button>
+            icon={item.icon}
+            label={item.label}
+            active={item.active}
+          />
         ))}
       </nav>
 
-      <div className="flex-1">
+      {/* Library Section */}
+      <div className="mb-8">
         <h3 className="text-white/40 mb-4 px-4 text-[14px] leading-[31px] tracking-[0.02em] font-medium">
           Library
         </h3>
         <nav className="space-y-[3px]">
           {libraryItems.map((item) => (
-            <button
-              key={item.label}
-              className="w-full flex items-center gap-2 h-[37px] px-4 rounded-full hover:bg-[#FFFFFF0A] transition-all duration-200 cursor-pointer"
-            >
-              <Image
-                src={item.icon}
-                alt={item.label}
-                width={20}
-                height={20}
-                className="opacity-70"
-              />
-              <span className="text-white/70 font-medium text-sm leading-tight tracking-wide">
-                {item.label}
-              </span>
-            </button>
+            <NavButton key={item.label} icon={item.icon} label={item.label} />
           ))}
         </nav>
       </div>
 
-      <div className="mb-5">
+      <div className="flex-1" />
+
+      <div className="mb-4">
         <PromotionalBanner />
       </div>
 
