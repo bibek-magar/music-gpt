@@ -10,6 +10,49 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #1a1a1a;
+  --color-bg-tertiary: #1e1e1e;
+  --color-bg-quaternary: #2a2a2a;
+
+  --color-bg-hover: #333333;
+  --color-bg-active: #3a3a3a;
+  --color-bg-active-hover: #454545;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #ffffffa3;
+  --color-text-tertiary: #ffffff80;
+  --color-text-muted: #6b6b6b;
+
+  --color-border-default: #ffffff29;
+  --color-border-hover: #ffffff66;
+  --color-border-active: #ffffff17;
+
+  --color-icon-default: #e5e5e5;
+  --color-icon-muted: #ffffff4d;
+
+  --color-accent-blue: #4a9eff;
+  --color-accent-orange: #ff8a00;
+
+  --spacing-37: 37px;
+  --spacing-48: 48px;
+
+  --radius-32: 32px;
+
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-48: 48px;
+
+  --line-height-31: 31px;
+  --line-height-58: 58px;
+  --line-height-146: 146%;
+
+  --letter-spacing-01: 0.01em;
+  --letter-spacing-02: 0.02em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +66,190 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-lux {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.scrollbar-lux::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-lux::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-lux::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+}
+
+.scrollbar-lux::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+@keyframes border-glow {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 138, 0, 0);
+  }
+  35% {
+    box-shadow: 0 0 24px rgba(255, 138, 0, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 138, 0, 0);
+  }
+}
+
+.animate-border-glow {
+  animation: border-glow 2.4s ease-out forwards;
+}
+
+@keyframes glow1 {
+  0%,
+  32% {
+    opacity: 1;
+  }
+  44%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes glow2 {
+  0%,
+  32% {
+    opacity: 0;
+  }
+  44%,
+  65% {
+    opacity: 1;
+  }
+  77%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes glow3 {
+  0%,
+  65% {
+    opacity: 0;
+  }
+  77%,
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Text glow/shimmer animations for loading states */
+@keyframes text-shimmer-rtl {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.text-glow {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shimmer-rtl 2s linear infinite;
+}
+
+.text-glow-muted {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shimmer-rtl 2.4s linear infinite;
+}
+
+@keyframes profile-popup-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -40px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes profile-popup-exit {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -32px, 0);
+  }
+}
+
+@keyframes profile-backdrop-enter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes profile-backdrop-exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.profile-popup-enter {
+  animation: profile-popup-enter 0.7s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.profile-popup-exit {
+  animation: profile-popup-exit 0.7s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.profile-backdrop-enter {
+  animation: profile-backdrop-enter 0.45s ease-out forwards;
+}
+
+.profile-backdrop-exit {
+  animation: profile-backdrop-exit 0.45s ease-in forwards;
 }
